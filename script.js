@@ -3,11 +3,7 @@ const listContainer = document.getElementById("list-container");
 
 
 inputBox.addEventListener('keydown', function (event){
-  if(event.key === 'Enter'){
-  if(inputBox == ""){
-    alert("Oops! can't create a empty task")
-  }
-  else{
+  if(event.key === 'Enter' && inputBox.value.trim() !== ""){
     let li = document.createElement("li");
     li.innerHTML=inputBox.value;
     listContainer.appendChild(li);
@@ -15,9 +11,11 @@ inputBox.addEventListener('keydown', function (event){
     span.innerHTML ="\u00d7";
     li.appendChild(span);
   }
+  else{
+    alert("Oops! can't create an empty task")
+  }
   inputBox.value="";
   saveData();
-}
 });
 
 listContainer.addEventListener("click", function(e){
